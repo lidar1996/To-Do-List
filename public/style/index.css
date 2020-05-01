@@ -1,0 +1,255 @@
+
+body {
+    background-image: url("https://www.kasandbox.org/programming-images/landscapes/crop-circle.png");
+    background-size: cover;
+}
+
+ .doneBtn {
+    display: inline-block;
+    border-radius: 1px;
+    background-color: brown;
+    border: none;
+    color: #FFFFFF;
+    font-size: 13px;
+    padding: 2px;
+    width: 50px;
+    transition: all 0.5s;
+    cursor: pointer;
+    margin: 1px;
+}
+
+.doneBtn span {
+    cursor: pointer;
+    display: inline-block;
+    position: relative;
+    transition: 0.5s;
+}
+
+ .doneBtn span:after {
+    content: '\00bb';
+    position: absolute;
+    opacity: 0;
+    top: 0;
+    right: -10px;
+    transition: 0.5s;
+}
+
+ .doneBtn:hover span {
+    padding-right: 15px;
+}
+
+ .doneBtn:hover span:after {
+    opacity: 1;
+    right: 0;
+}
+.taskli{
+    cursor: pointer;
+    color:brown;
+    text-align:left;
+    font-family:cursive;
+    font-weight:bold;
+    font-size: 13px;
+}
+ h1 {
+    text-align: center;
+    font-family: cursive;
+    font-weight: bold;
+    font-size: 35px;
+    color:rgb(85, 3, 3);
+}
+
+ .parent {
+    display: grid;
+    grid-template-columns: repeat(4, 2fr);
+    grid-row-gap: 10px;
+    grid-column-gap: 10px;
+    align-items: start;
+    max-width: 1100px;
+    padding: 20px;
+}
+
+ .child {
+    max-height: 200px;
+    max-width: 250px;
+    background: antiquewhite;
+    border: 5px ridge;
+    position: relative;
+    min-width: 220px;
+    overflow: auto;
+}
+
+ .child:hover {
+    background-color: bisque
+}
+
+ .child--inner {
+    max-height: 200px;
+    max-width: 250px;
+    text-align: center;
+    min-height: 150px;
+    min-width: 180px;
+
+}
+
+ .day {
+    font-family: cursive;
+    font-weight: bold;
+    text-align: center;
+    text-decoration: underline;
+}
+
+.toolBar {
+    list-style-type: none;
+    margin: 0;
+    padding: 0;
+    overflow: hidden;
+  }
+  .toolBar li {
+    float: left;
+  }
+  .toolBar li button {
+    font-family: cursive;
+    font-weight: bold;
+    text-align: center;
+    background-color: wheat;
+    color: saddlebrown;
+    cursor: pointer;
+    height: 50px;
+    width: 100px;
+    font-size: 13px;
+  }
+ .toolBar li button:hover:not(.active) {
+    background-color: navajowhite
+  }
+ 
+
+ #createTask {
+    font-family: cursive;
+    text-align: center;
+    background-color: wheat;
+    color: saddlebrown;
+    height: 100px;
+    width: 100px;
+    border: none;
+    padding: 10px;
+    text-align: center;
+    text-decoration: none;
+    display: inline-block;
+    font-size: 60px;
+    border-radius: 70%;
+    float: right;
+    cursor: pointer;
+    margin-right: 90px;
+    box-shadow: 0 9px burlywood;
+    margin-bottom: 40px;
+}
+
+#createTask:hover {
+    background-color: navajowhite
+}
+
+ #createTask:active {
+    background-color: wheat;
+    box-shadow: 0 5px burlywood;
+    transform: translateY(4px);
+}
+
+ .taskName {
+    font-family: cursive;
+    font-size: 15px;
+}
+
+.checkBox {
+    height: 15px;
+    width: 15px;
+    color: gray;
+    cursor: pointer
+}
+/* The Modal (background) */
+
+.modal {
+    display: none;
+    /* Hidden by default */
+    position: fixed;
+    /* Stay in place */
+    z-index: 1;
+    /* Sit on top */
+    padding-top: 100px;
+    /* Location of the box */
+    left: 0;
+    top: 0;
+    width: 100%;
+    /* Full width */
+    height: 100%;
+    /* Full height */
+    overflow: auto;
+    /* Enable scroll if needed */
+    background-color: rgb(0, 0, 0);
+    /* Fallback color */
+    background-color: rgba(0, 0, 0, 0.4);
+    /* Black w/ opacity */
+}
+/* Modal Content */
+
+#modal-content {
+    background-color: cornsilk;
+    margin: auto;
+    padding: 20px;
+    border: 1px solid #888;
+    width: 35%;
+    height: 80%;
+    text-align: center;
+    overflow: auto;
+}
+/* The Close Button */
+
+.close {
+    color: black;
+    float: right;
+    font-size: 28px;
+    font-weight: bold;
+}
+
+.close:hover,
+.close:focus {
+    color: #000;
+    text-decoration: none;
+    cursor: pointer;
+}
+
+#inputHeader {
+    font-size: 30px;
+}
+
+.input-task {
+    font-family: fantasy;
+}
+
+ #addTaskToListBTN {
+    font-family: fantasy;
+    font-size: 20px;
+    background-color: black;
+    color: white;
+    cursor: pointer;
+    height: 50px;
+    width: 60px;
+}
+
+ #addTaskToListBTN:hover {
+    background-color: gray
+}
+
+.error {
+    color: red;
+}
+.tasksHours {
+    font-size: 14px;
+    font-family: Courier New;
+}
+.taskli{
+    font-size: 15px;
+}
+.task-list{
+    text-align: left;
+}
+

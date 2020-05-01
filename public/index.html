@@ -1,0 +1,206 @@
+<!DOCTYPE html>
+<html>
+<link rel="stylesheet" href="style/login.css">
+<link rel="stylesheet" href="style/index.css">
+<link href='https://fonts.googleapis.com/css?family=Open+Sans:400,300,700' rel='stylesheet' type='text/css'>
+
+
+<head>
+    <meta charset="utf-8">
+    <title>To Do List</title>
+</head>
+
+<body>
+    <div class="auth open">
+        <div class="container">
+            <h1 class="h1-auth">Welcome To Improve Your Life</h1>
+            <div class="frame">
+                <div class="nav">
+                    <ul class "links">
+                        <li class="signin-active"><a class="btn">SIGN IN</a></li>
+                        <li class="signup-inactive"><a class="btn">SIGN UP </a></li>
+                    </ul>
+                </div>
+                <div ng-app ng-init="checked = false">
+                    <form class="form-signin" action="" method="post" name="form">
+                        <label class="input-data" for="username">Email</label>
+                        <input id="email" class="form-styling" type="email" />
+                        <label class="input-data" for="password">Password</label>
+                        <input id="password" class="form-styling" type="password" />
+                        <button class="btn-signin">Sign in</button><br>
+                        <p class="error-auth"></p>
+                    </form>
+                </div>
+
+                <form class="form-signup" action="" method="post" name="form">
+                    <label class="input-data" for="fullname">Full name</label>
+                    <input class="form-styling" type="text" name="fullname" placeholder="" />
+                    <label class="input-data" for="email">Email</label>
+                    <input class="form-styling" type="email" name="email" placeholder="" />
+                    <label class="input-data" for="password">Password</label>
+                    <input class="form-styling" type="password" name="password" placeholder="" />
+                    <button ng-click="checked = !checked" class="btn-signup">Sign Up</button><br>
+                    <p class="error-auth"></p>
+                </form>
+
+            </div>
+        </div>
+    </div>
+
+    <section class="app">
+        <div id="myApp">
+            <div id="getInput" class="modal">
+                <!-- Modal content -->
+                <div id="modal-content">
+                    <span class="close">&times;</span>
+                    <h1 class="day" id="inputHeader">Please Enter New Task</h1>
+                    <label class="input-task">Task Name :
+                        <input type="text" id="taskNameInput">
+                    </label>
+                    <br>
+                    <br>
+                    <label class="input-task">Task Length :
+                        <input type="text" id="taskLenngthInput"> hs</label>
+                    <br>
+                    <br>
+                    <label class="input-task">Location :
+                        <input type="text" id="taskLocationInput">
+                    </label>
+                    <br>
+                    <br>
+                    <label class="input-task">Task Day :
+                        <select id="taskDay">
+                            <option class="options" value="" selected disabled hidden>Choose here</option>
+                            <option class="options" value="0">{{days[0].name}}</option>
+                            <option class="options" value="1">{{days[1].name}}</option>
+                            <option class="options" value="2">{{days[2].name}}</option>
+                            <option class="options" value="3">{{days[3].name}}</option>
+                            <option class="options" value="4">{{days[4].name}}</option>
+                            <option class="options" value="5">{{days[5].name}}</option>
+                            <option class="options" value="6">{{days[6].name}}</option>
+                        </select>
+                    </label>
+                    <br>
+                    <br>
+                    <button id="addTaskToListBTN">ADD</button>
+                    <br>
+                    <br>
+                    <labal class="error" v-if="isError">Error input, Please try again</labal>
+                    <labal class="error" v-if="isEnoughRoom">Error ! there is not enough room in this day for the task
+                    </labal>
+                </div>
+            </div>
+            <button id="createTask"> + </button>
+            <ul class="toolBar">
+                <li><button class="signout">Sign Out</button></li>
+                <li><random-background></random-background></li>
+            </ul>
+            <h1>Hello {{username}}, Your To Do List :</h1>
+
+            <div class="parent">
+                <div class="child">
+                    <div class="child--inner">
+                        <h2 class="day">{{days[0].name}}</h2>
+                        <h3 class="tasksHours">Time Left : {{capacityHoursPerDay - days[0].tasksHours}}hs</h3>
+                        <ul class="task-list">
+                            <task-component v-for="(task,index) in days[0].tasks" :key="task.id" :task="task"
+                                v-on:remove="removeTask(0,task)" />
+                        </ul>
+                    </div>
+                </div>
+                <div class="child">
+                    <div class="child--inner">
+                        <h2 class="day">{{days[1].name}}</h2>
+                        <h3 class="tasksHours">Time Left : {{capacityHoursPerDay - days[1].tasksHours}}hs</h3>
+                        <ul class="task-list">
+                            <task-component v-for="(task,index) in days[1].tasks" :key="task.id" :task="task"
+                                v-on:remove="removeTask(1,task)" />
+                        </ul>
+                    </div>
+                </div>
+                <div class="child">
+                    <div class="child--inner">
+                        <h2 class="day">{{days[2].name}}</h2>
+                        <h3 class="tasksHours">Time Left : {{capacityHoursPerDay - days[2].tasksHours}}hs</h3>
+                        <ul class="task-list">
+                            <task-component v-for="(task,index) in days[2].tasks" :key="task.id" :task="task"
+                                v-on:remove="removeTask(2,task)" />
+                        </ul>
+                    </div>
+                </div>
+                <div class="child">
+                    <div class="child--inner">
+                        <h2 class="day">{{days[3].name}}</h2>
+                        <h3 class="tasksHours">Time Left : {{capacityHoursPerDay - days[3].tasksHours}}hs</h3>
+                        <ul class="task-list">
+                            <task-component v-for="(task,index) in days[3].tasks" :key="task.id" :task="task"
+                                v-on:remove="removeTask(3,task)" />
+                        </ul>
+                    </div>
+                </div>
+                <div class="child">
+                    <div class="child--inner">
+                        <h2 class="day">{{days[4].name}}</h2>
+                        <h3 class="tasksHours">Time Left : {{capacityHoursPerDay - days[4].tasksHours}}hs</h3>
+                        <ul class="task-list">
+                            <task-component v-for="(task,index) in days[4].tasks" :key="task.id" :task="task"
+                                v-on:remove="removeTask(4,task)" />
+                        </ul>
+                    </div>
+                </div>
+                <div class="child">
+                    <div class="child--inner">
+                        <h2 class="day">{{days[5].name}}</h2>
+                        <h3 class="tasksHours">Time Left : {{capacityHoursPerDay - days[5].tasksHours}}hs</h3>
+                        <ul class="task-list">
+                            <task-component v-for="(task,index) in days[5].tasks" :key="task.id" :task="task"
+                                v-on:remove="removeTask(5,task)" />
+                        </ul>
+                    </div>
+                </div>
+                <div class="child">
+                    <div class="child--inner">
+                        <h2 class="day">{{days[6].name}}</h2>
+                        <h3 class="tasksHours">Time Left : {{capacityHoursPerDay - days[6].tasksHours}}hs</h3>
+                        <ul class="task-list">
+                            <task-component v-for="(task,index) in days[6].tasks" :key="task.id" :task="task"
+                                v-on:remove="removeTask(6,task)" />
+                        </ul>
+                    </div>
+                </div>
+
+            </div>
+        </div>
+    </section>
+
+    <!-- The core Firebase JS SDK is always required and must be listed first -->
+    <script src="https://www.gstatic.com/firebasejs/7.14.1/firebase-app.js"></script>
+    <script src="https://www.gstatic.com/firebasejs/7.14.1/firebase-functions.js"></script>
+    <script src="https://www.gstatic.com/firebasejs/7.14.1/firebase-auth.js"></script>
+    <script src="https://www.gstatic.com/firebasejs/7.14.1/firebase-firestore.js"></script>
+
+    <!-- TODO: Add SDKs for Firebase products that you want to use
+     https://firebase.google.com/docs/web/setup#available-libraries -->
+
+    <script>
+        const firebaseConfig = {
+            apiKey: "AIzaSyAmAt_lu7ATE12KtDZGsKIGxVYr-kHJU18",
+            authDomain: "to-do-list-lbd.firebaseapp.com",
+            databaseURL: "https://to-do-list-lbd.firebaseio.com",
+            projectId: "to-do-list-lbd",
+            storageBucket: "to-do-list-lbd.appspot.com",
+            messagingSenderId: "949390054506",
+            appId: "1:949390054506:web:7363f8e77c2135f7162613"
+        };
+        firebase.initializeApp(firebaseConfig);
+    </script>
+
+    <script src="https://cdn.jsdelivr.net/npm/vue/dist/vue.js"></script>
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.4.1/jquery.min.js"></script>
+    <script src="scripts/tasks.js"></script>
+    <script src="scripts/auth.js"></script>
+    <script src="scripts/app.js"></script>
+
+</body>
+
+</html>
